@@ -1,0 +1,22 @@
+{{>partials/layout.header}}
+
+<div class="row mt-5">
+
+  {{#cards}}
+    <div class="card text-white {{style}}" style="max-width: 20rem; margin: 15px auto; ">
+      <div class="card-header"><em>{{command}}</em></div>
+      <div class="card-body">
+        <h4 class="card-title">{{title}}</h4>
+        <p class="card-text">{{description}}</p>
+        <a class="btn btn-primary shadow" href="{{npmLink}}" target="_blank">npm</a>
+        {{#websiteLink}}
+        <a class="btn btn-primary" href="{{websiteLink}}" target="_blank">Official website</a>
+        {{/websiteLink}}
+      </div>
+    </div>
+  {{/cards}}
+
+</div>
+
+{{>partials/layout.footer}}
+

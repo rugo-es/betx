@@ -1,0 +1,54 @@
+{{>partials/layout.header}}
+
+<div class="row justify-content-center mt-4">
+  <div class="col-sm-12 col-md-6"> 
+    <form id="formSingUp" onsubmit="register(); return false;" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Sing up</legend>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="name" placeholder="Name" required>
+          <label for="name">Name</label>
+        </div>
+        <div class="form-floating mt-3">
+          <input type="text" class="form-control" id="surname" placeholder="Surname" required>
+          <label for="surname">Surname</label>
+        </div>
+        <div class="form-floating mt-3">
+          <input type="email" class="form-control" id="email" placeholder="Email address" required>
+          <label for="email">Email address</label>
+        </div>
+        <div class="form-floating mt-3">
+          <input type="password" class="form-control" id="password" placeholder="Password" required>
+          <label for="password">Password</label>
+        </div>
+        <fieldset class="form-group mt-3">
+          <legend>Role</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="role" id="role_user" value="user" checked="">
+              USER
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="role" id="role_admin" value="admin">
+              ADMIN
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="form-group mt-3">
+          <legend>Profile picture</legend>
+          <div class="form-group">
+            <input id="image" type="file" class="form-control-file" id="picture">
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div class="row mt-4">
+  <a href="/login"><button type="button" class="btn btn-link">Back to login</button></a>
+</div>
+
+{{>partials/layout.footer}}

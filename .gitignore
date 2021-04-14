@@ -1,0 +1,4 @@
+node_modules
+.env
+log/*.log
+app/assets/img/profile

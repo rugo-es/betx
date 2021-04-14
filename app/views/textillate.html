@@ -1,0 +1,59 @@
+{{>partials/layout.header}}
+
+<h1 class="mt-5">Text Effects</h1>
+
+
+
+<div class="row my-5 overflow-hidden">
+  <div class="col-12 my-5">
+    <h2 class=" text-center tlt">
+      <ul class="texts">
+        <li data-in-effect="fadeIn" data-out-effect="fadeOut" data-out-shuffle="true">Once upon a time</li>
+        <li data-in-effect="fadeIn" data-in-shuffle="true" data-out-effect="bounceOut" data-out-sync="true">there was a ninja dev</li>
+        <li data-in-effect="bounceIn" data-in-sync="true" data-out-effect="bounceOutUp" data-out-sync="true">who loved nodejs</li>
+        <li data-in-effect="bounceInDown" data-in-shuffle="true" data-out-effect="rollOut" >he studied and worked</li>
+        <li data-in-effect="rollIn" data-out-effect="hinge" data-out-shuffle="true">until he mastered it</li>
+      </ul>
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center">
+    <button onclick="startTlt();" class="btn btn-primary mx-1 mt-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play-btn" viewBox="0 0 16 16">
+        <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="row my-5 py-5 overflow-hidden">
+  <div class="col-12 my-5">
+    <h2 class="text-center" id="animate-text">Animate.css</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center">
+    <button onclick="animateCSS('#animate-text', 'bounce')" class="btn btn-primary mx-1 mt-2">bounce</button>
+    <button onclick="animateCSS('#animate-text', 'rubberBand')" class="btn btn-primary mx-1 mt-2">rubberBand</button>
+    <button onclick="animateCSS('#animate-text', 'shakeY')" class="btn btn-primary mx-1 mt-2">shakeY</button>
+    <button onclick="animateCSS('#animate-text', 'jello')" class="btn btn-primary mx-1 mt-2">jello</button>
+    <button onclick="animateCSS('#animate-text', 'heartBeat')" class="btn btn-primary mx-1 mt-2">heartBeat</button>
+    <button onclick="animateCSS('#animate-text', 'backInRight')" class="btn btn-primary mx-1 mt-2">backInRight</button>
+    <button onclick="animateCSS('#animate-text', 'bounceOutDown')" class="btn btn-primary mx-1 mt-2">bounceOutDown</button>
+    <button onclick="animateCSS('#animate-text', 'lightSpeedInLeft')" class="btn btn-primary mx-1 mt-2">lightSpeedInLeft</button>
+    <button onclick="animateCSS('#animate-text', 'flipInX')" class="btn btn-primary mx-1 mt-2">flipInX</button>
+    <button onclick="animateCSS('#animate-text', 'rotateOut')" class="btn btn-primary mx-1 mt-2">rotateOut</button>
+  </div>
+</div>
+
+
+<!--
+<div class="row mt-5">
+  <h1  class="title">MY FIRST EXAMPLE</h1>
+</div>
+-->
+
+{{>partials/layout.footer}}
+
