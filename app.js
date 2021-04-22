@@ -51,6 +51,9 @@ app.use('/api', usersRoutes)
 const matchesRoutes = require(path.join(__dirname, 'app/routes/matches'))
 app.use('/api', matchesRoutes)
 
+const teamsRoutes = require(path.join(__dirname, 'app/routes/teams'))
+app.use('/api', teamsRoutes)
+
 app.listen(port, () => {
   console.log('Example app listening at http://localhost:'+port)
 

@@ -1,17 +1,16 @@
 "use strict"
 
 const express = require('express')
-const matchesController = require('../controllers/matches')
+const teamsController = require('../controllers/teams')
 
 let app = express.Router()
 
 let md_auth = require('../middleware/authenticate')
 
-app.get('/matches', md_auth.ensureAuth, matchesController.getAll)
-app.get('/matches/:id', md_auth.ensureAuth, matchesController.getById)
-app.post('/matches', md_auth.ensureAuth, matchesController.create)
-app.put('/matches/:id', md_auth.ensureAuth, matchesController.update)
-app.delete('/matches/:id', md_auth.ensureAuth, matchesController.destroy)
-
+app.get('/teams', md_auth.ensureAuth, teamsController.getAll)
+app.get('/teams/:id', md_auth.ensureAuth, teamsController.getById)
+app.post('/teams', md_auth.ensureAuth, teamsController.create)
+app.put('/teams/:id', md_auth.ensureAuth, teamsController.update)
+app.delete('/teams/:id', md_auth.ensureAuth, teamsController.destroy)
 
 module.exports = app
