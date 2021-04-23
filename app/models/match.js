@@ -11,16 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Match.belongsTo(models.Team, {foreignKey: 'localId', as: 'local'})
+      Match.belongsTo(models.Team, {foreignKey: 'visitorId', as: 'visitor'})
+      Match.belongsTo(models.League, {foreignKey: 'leagueId', as: 'league'})
+      Match.belongsTo(models.Season, {foreignKey: 'seasonId', as: 'season'})
     }
   };
   Match.init({
-    local: DataTypes.INTEGER,
+    localId: DataTypes.INTEGER,
     local_goals: DataTypes.INTEGER,
-    visitor: DataTypes.INTEGER,
+    visitorId: DataTypes.INTEGER,
     visitor_goals: DataTypes.INTEGER,
     match_date: DataTypes.DATE,
-    league: DataTypes.INTEGER,
-    season: DataTypes.INTEGER,
+    leagueId: DataTypes.INTEGER,
+    seasonId: DataTypes.INTEGER,
     journey: DataTypes.INTEGER,
     result: DataTypes.STRING
   }, {

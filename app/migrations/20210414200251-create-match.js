@@ -8,17 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      local: {
+      localId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Teams',
+          key: 'id'
+        }
       },
       local_goals: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      visitor: {
+      visitorId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Teams',
+          key: 'id'
+        }
       },
       visitor_goals: {
         type: Sequelize.INTEGER,
@@ -28,13 +36,21 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
-      league: {
+      leagueId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Leagues',
+          key: 'id'
+        }
       },
-      season: {
+      seasonId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Seasons',
+          key: 'id'
+        }
       },
       journey: {
         type: Sequelize.INTEGER,
