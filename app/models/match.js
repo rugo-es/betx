@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     leagueId: DataTypes.INTEGER,
     seasonId: DataTypes.INTEGER,
     journey: DataTypes.INTEGER,
-    result: DataTypes.STRING
+    result: DataTypes.STRING,
+    match_link: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Match',

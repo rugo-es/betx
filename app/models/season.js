@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Season.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    code: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Season',

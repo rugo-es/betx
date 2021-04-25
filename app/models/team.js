@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Team.init({
     name: DataTypes.STRING,
+    link: DataTypes.STRING,
     icon: DataTypes.STRING
   }, {
     sequelize,

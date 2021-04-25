@@ -12,6 +12,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      matchesPerSeason: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      code: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       icon: {
         type: Sequelize.STRING
       },

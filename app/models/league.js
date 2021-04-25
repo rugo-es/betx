@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   League.init({
     name: DataTypes.STRING,
+    code: DataTypes.STRING,
+    matchesPerSeason: DataTypes.INTEGER,
     icon: DataTypes.STRING
   }, {
     sequelize,

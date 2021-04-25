@@ -60,6 +60,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      match_link: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
