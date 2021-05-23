@@ -17,8 +17,7 @@ module.exports = {
         }
       },
       local_goals: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       visitorId: {
         type: Sequelize.INTEGER,
@@ -29,12 +28,10 @@ module.exports = {
         }
       },
       visitor_goals: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       match_date: {
-        type: Sequelize.DATE,
-        allowNull: false
+        type: Sequelize.DATE
       },
       leagueId: {
         type: Sequelize.INTEGER,
@@ -57,6 +54,9 @@ module.exports = {
         allowNull: false
       },
       result: {
+        type: Sequelize.STRING
+      },
+      state: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -65,11 +65,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },

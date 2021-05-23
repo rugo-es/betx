@@ -5,9 +5,10 @@ const Match = models.Match
 
 function getAll(req, res){
   try{
-    Match.findAll({where: req.body, include: ['local', 'visitor', 'league', 'season']}).then(matches => {
+    Match.findAll({where: req.body, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }] }).then(matches => {
       res.json(matches)
     }).catch(err => {
+      console.log(err)
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
   }catch(err){

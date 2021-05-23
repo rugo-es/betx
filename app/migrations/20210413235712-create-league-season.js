@@ -1,31 +1,32 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Leagues', {
+    await queryInterface.createTable('LeagueSeasons', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      code: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      icon: {
-        type: Sequelize.STRING
-      },
-      countryId:{
-        allowNull: false,
+      leagueId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Countries',
+          model: 'Leagues',
           key: 'id'
         }
+      },
+      seasonId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Seasons',
+          key: 'id'
+        }
+      },
+      matches: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +41,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Leagues');
+    await queryInterface.dropTable('LeagueSeasons');
   }
 };

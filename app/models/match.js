@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     seasonId: DataTypes.INTEGER,
     journey: DataTypes.INTEGER,
     result: DataTypes.STRING,
+    state:  DataTypes.STRING,
     match_link: DataTypes.STRING
   }, {
     sequelize,
