@@ -219,11 +219,31 @@ function matches(req, res){
   })
 }
 
+function teams(req, res){
+  res.render('teams', {
+    title: 'Teams', 
+    nav: true,
+    mainClass: 'container mt-5 pt-3',
+    css: [
+      cdn.css.bootswatch.cyborg, 
+      '/css/style.css'
+    ],
+    scripts: [
+      cdn.js.jquery,  
+      cdn.js.bootstrap.bundle, 
+      '/js/app.js',
+      '/js/teams.js'
+      
+    ]
+  })
+}
+
 module.exports = {
   home,
   textEffects,
   datatable,
   amcharts,
   lightbox,
-  matches
+  matches, 
+  teams
 }

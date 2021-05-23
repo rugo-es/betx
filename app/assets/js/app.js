@@ -40,7 +40,7 @@ function logOut(){
 }
 
 function linkActive(){
-  let url = location.href.replace(/^.*\/\/[^\/]+/, '')
+  let url = location.pathname
   $("a.nav-link").removeClass('active')
   $("a.nav-link[href$='"+url+"']").addClass('active')
 }

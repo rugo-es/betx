@@ -5,7 +5,10 @@ const Team = models.Team
 
 function getAll(req, res){
   try{
-    Team.findAll({where: req.body}).then(teams => {
+    Team.findAll({
+      where: req.body,
+      order : [['name', 'ASC']]
+    }).then(teams => {
       res.json(teams)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})

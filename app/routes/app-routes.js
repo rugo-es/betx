@@ -11,5 +11,6 @@ app.get('/datatable', appRoutesController.datatable)
 app.get('/amcharts', appRoutesController.amcharts)
 app.get('/lightbox', appRoutesController.lightbox)
 app.get('/matches', appRoutesController.matches)
+app.get('/teams', appRoutesController.teams)
 
 module.exports = app
