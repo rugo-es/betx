@@ -1,6 +1,6 @@
 "use strict"
 
-const { Op } = require("sequelize");
+const { Op } = require("sequelize")
 const models = require('../../models')
 const Team = models.Team
 const Match = models.Match
@@ -21,7 +21,7 @@ const getTeams = () => {
 
 const getMatchesByTeam = (team) => {
   return new Promise((resolve, reject) => {
-    Match.findAll({where: { [Op.or]: [{localId: team}, {visitorId: team}]}, include: ['local', 'visitor'] })
+    Match.findAll({where: { [Op.or]: [{localId: team}, {visitorId: team}]}, include: ['local', 'visitor'], order: ['seasonId', 'journey'] })
     .then(data => {
       resolve(data)
     })

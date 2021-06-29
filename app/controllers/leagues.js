@@ -1,28 +1,16 @@
 "use strict"
 
-const { Op } = require("sequelize")
 const models = require('../models')
-const Match = models.Match
+const League = models.League
 
 function getAll(req, res){
   try{
-    Match.findAll({where: req.body, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }] }).then(matches => {
-      res.json(matches)
+    League.findAll({
+      where: req.body,
+      order : [['id', 'ASC']]
+    }).then(leagues => {
+      res.json(leagues)
     }).catch(err => {
-      console.log(err)
-      res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
-    })
-  }catch(err){
-    res.status(500).send({error: true, message: 'Interval Server Error'})
-  }
-}
-
-function getAllByTeam(req, res){
-  try{
-    Match.findAll({where: { [Op.or]: [{ localId: req.params.team }, { visitorId: req.params.team }] }, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }], order: [['seasonId', 'ASC'], ['journey', 'ASC']] }).then(matches => {
-      res.json(matches)
-    }).catch(err => {
-      console.log(err)
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
   }catch(err){
@@ -32,8 +20,8 @@ function getAllByTeam(req, res){
 
 function getById(req, res){
   try{
-    Match.findByPk(req.params.id).then(match => {
-      res.json(match)
+    League.findByPk(req.params.id).then(league => {
+      res.json(league)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
@@ -44,9 +32,9 @@ function getById(req, res){
 
 function create(req, res){
   try{
-    let match = req.body
-    Match.create(match).then((match) => {
-      res.json(match)
+    let league = req.body
+    League.create(league).then((league) => {
+      res.json(league)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
@@ -57,9 +45,9 @@ function create(req, res){
 
 function update(req, res){
   try{
-    Match.findByPk(req.params.id).then(match => {
-      Match.update(req.body, { where: { id: match.id }}).then(() => {
-        res.status(400).send(match)
+    League.findByPk(req.params.id).then(league => {
+      League.update(req.body, { where: { id: league.id }}).then(() => {
+        res.status(400).send(league)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
       })  
@@ -73,10 +61,10 @@ function update(req, res){
 
 function destroy(req, res){
   try{
-    Match.findByPk(req.params.id).then(match => {
-      let id = match ? match.id : 0;
-      Match.destroy({ where: { id: match.id }}).then(() => {
-        res.json(match)
+    League.findByPk(req.params.id).then(league => {
+      let id = league ? league.id : 0;
+      League.destroy({ where: { id: id }}).then(() => {
+        res.json(league)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
       })    
@@ -90,7 +78,6 @@ function destroy(req, res){
 
 module.exports = {
   getAll,
-  getAllByTeam,
   getById,
   create,
   update,

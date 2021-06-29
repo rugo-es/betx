@@ -219,6 +219,33 @@ function matches(req, res){
   })
 }
 
+function leagues(req, res){
+  res.render('leagues', {
+    title: 'Leagues', 
+    nav: true,
+    mainClass: 'container mt-5 pt-3',
+    css: [
+      cdn.css.bootswatch.cyborg, 
+      cdn.css.datatable,
+      '/css/style.css'
+    ],
+    scripts: [
+      cdn.js.jquery,  
+      cdn.js.bootstrap.bundle, 
+      '/js/app.js',
+      cdn.js.amcharts.core,
+      cdn.js.amcharts.charts,
+      cdn.js.amcharts.timeline,
+      cdn.js.amcharts.bullets,
+      cdn.js.amcharts.animated,
+      cdn.js.amcharts.theme.dark,
+      cdn.js.datatable,
+      '/js/leagues.js'
+      
+    ]
+  })
+}
+
 function teams(req, res){
   res.render('teams', {
     title: 'Teams', 
@@ -226,12 +253,20 @@ function teams(req, res){
     mainClass: 'container mt-5 pt-3',
     css: [
       cdn.css.bootswatch.cyborg, 
+      cdn.css.datatable,
       '/css/style.css'
     ],
     scripts: [
       cdn.js.jquery,  
       cdn.js.bootstrap.bundle, 
       '/js/app.js',
+      cdn.js.amcharts.core,
+      cdn.js.amcharts.charts,
+      cdn.js.amcharts.timeline,
+      cdn.js.amcharts.bullets,
+      cdn.js.amcharts.animated,
+      cdn.js.amcharts.theme.dark,
+      cdn.js.datatable,
       '/js/teams.js'
       
     ]
@@ -245,5 +280,6 @@ module.exports = {
   amcharts,
   lightbox,
   matches, 
+  leagues,
   teams
 }

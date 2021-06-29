@@ -63,7 +63,7 @@ function destroy(req, res){
   try{
     Team.findByPk(req.params.id).then(team => {
       let id = team ? team.id : 0;
-      Team.destroy({ where: { id: team.id }}).then(() => {
+      Team.destroy({ where: { id: id }}).then(() => {
         res.json(team)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})

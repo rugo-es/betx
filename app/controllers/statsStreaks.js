@@ -1,15 +1,13 @@
 "use strict"
 
-const { Op } = require("sequelize")
 const models = require('../models')
-const Match = models.Match
+const StatsStreaks = models.StatsStreaks
 
 function getAll(req, res){
   try{
-    Match.findAll({where: req.body, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }] }).then(matches => {
-      res.json(matches)
+    StatsStreaks.findAll({ where: req.body }).then(stats => {
+      res.json(stats)
     }).catch(err => {
-      console.log(err)
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
   }catch(err){
@@ -17,23 +15,10 @@ function getAll(req, res){
   }
 }
 
-function getAllByTeam(req, res){
+function getByTeam(req, res){
   try{
-    Match.findAll({where: { [Op.or]: [{ localId: req.params.team }, { visitorId: req.params.team }] }, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }], order: [['seasonId', 'ASC'], ['journey', 'ASC']] }).then(matches => {
-      res.json(matches)
-    }).catch(err => {
-      console.log(err)
-      res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
-    })
-  }catch(err){
-    res.status(500).send({error: true, message: 'Interval Server Error'})
-  }
-}
-
-function getById(req, res){
-  try{
-    Match.findByPk(req.params.id).then(match => {
-      res.json(match)
+    StatsStreaks.findAll({ where: {teamId: req.params.team} }).then(stats => {
+      res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
@@ -44,9 +29,9 @@ function getById(req, res){
 
 function create(req, res){
   try{
-    let match = req.body
-    Match.create(match).then((match) => {
-      res.json(match)
+    let stats = req.body
+    StatsStreaks.create(stats).then((stats) => {
+      res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
     })
@@ -57,9 +42,9 @@ function create(req, res){
 
 function update(req, res){
   try{
-    Match.findByPk(req.params.id).then(match => {
-      Match.update(req.body, { where: { id: match.id }}).then(() => {
-        res.status(400).send(match)
+    StatsStreaks.findByPk(req.params.id).then(stats => {
+      StatsStreaks.update(req.body, { where: { id: stats.id }}).then(() => {
+        res.status(400).send(stats)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
       })  
@@ -73,10 +58,10 @@ function update(req, res){
 
 function destroy(req, res){
   try{
-    Match.findByPk(req.params.id).then(match => {
-      let id = match ? match.id : 0;
-      Match.destroy({ where: { id: match.id }}).then(() => {
-        res.json(match)
+    StatsStreaks.findByPk(req.params.id).then(stats => {
+      let id = stats ? stats.id : 0;
+      StatsStreaks.destroy({ where: { id: id }}).then(() => {
+        res.json(stats)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
       })    
@@ -90,8 +75,7 @@ function destroy(req, res){
 
 module.exports = {
   getAll,
-  getAllByTeam,
-  getById,
+  getByTeam,
   create,
   update,
   destroy
