@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Stats extends Model {
+  class StatsTeams extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Stats.belongsTo(models.Team, {foreignKey: 'TeamId', as: 'team'})
+      StatsTeams.belongsTo(models.Team, {foreignKey: 'TeamId', as: 'team'})
     }
   };
-  Stats.init({
+  StatsTeams.init({
     teamId: DataTypes.INTEGER,
     num_matches: DataTypes.INTEGER,
     num_matches_finished: DataTypes.INTEGER,
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     per_ties: DataTypes.DECIMAL
   }, {
     sequelize,
-    modelName: 'Stats',
+    modelName: 'StatsTeams',
   });
-  return Stats;
+  return StatsTeams;
 };

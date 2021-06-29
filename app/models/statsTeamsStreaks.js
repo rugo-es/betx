@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class StatsStreaks extends Model {
+  class StatsTeamsStreaks extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      StatsStreaks.belongsTo(models.League, {foreignKey: 'LeagueId', as: 'league'})
-      StatsStreaks.belongsTo(models.Season, {foreignKey: 'SeasonId', as: 'season'})
-      StatsStreaks.belongsTo(models.Team, {foreignKey: 'TeamId', as: 'team'})
+      StatsTeamsStreaks.belongsTo(models.League, {foreignKey: 'LeagueId', as: 'league'})
+      StatsTeamsStreaks.belongsTo(models.Season, {foreignKey: 'SeasonId', as: 'season'})
+      StatsTeamsStreaks.belongsTo(models.Team, {foreignKey: 'TeamId', as: 'team'})
     }
   };
-  StatsStreaks.init({
+  StatsTeamsStreaks.init({
     leagueId: DataTypes.INTEGER,
     seasonId: DataTypes.INTEGER,
     teamId: DataTypes.INTEGER,
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     tie: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'StatsStreaks',
+    modelName: 'StatsTeamsStreaks',
   });
-  return StatsStreaks;
+  return StatsTeamsStreaks;
 };

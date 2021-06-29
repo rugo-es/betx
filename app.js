@@ -57,11 +57,11 @@ app.use('/api', teamsRoutes)
 const leaguesRoutes = require(path.join(__dirname, 'app/routes/leagues'))
 app.use('/api', leaguesRoutes)
 
-const statsRoutes = require(path.join(__dirname, 'app/routes/stats'))
-app.use('/api', statsRoutes)
+const statsTeamsRoutes = require(path.join(__dirname, 'app/routes/statsTeams'))
+app.use('/api', statsTeamsRoutes)
 
-const statsStreaksRoutes = require(path.join(__dirname, 'app/routes/statsStreaks'))
-app.use('/api', statsStreaksRoutes)
+const statsTeamsStreaksRoutes = require(path.join(__dirname, 'app/routes/statsTeamsStreaks'))
+app.use('/api', statsTeamsStreaksRoutes)
 
 app.listen(port, () => {
   console.log('Example app listening at http://localhost:'+port)

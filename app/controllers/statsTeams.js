@@ -1,11 +1,11 @@
 "use strict"
 
 const models = require('../models')
-const StatsStreaks = models.StatsStreaks
+const StatsTeams = models.StatsTeams
 
 function getAll(req, res){
   try{
-    StatsStreaks.findAll({ where: req.body }).then(stats => {
+    StatsTeams.findAll({ where: req.body }).then(stats => {
       res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
@@ -17,7 +17,7 @@ function getAll(req, res){
 
 function getByTeam(req, res){
   try{
-    StatsStreaks.findAll({ where: {teamId: req.params.team} }).then(stats => {
+    StatsTeams.findOne({ where: {teamId: req.params.team} }).then(stats => {
       res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
@@ -30,7 +30,7 @@ function getByTeam(req, res){
 function create(req, res){
   try{
     let stats = req.body
-    StatsStreaks.create(stats).then((stats) => {
+    StatsTeams.create(stats).then((stats) => {
       res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
@@ -42,8 +42,8 @@ function create(req, res){
 
 function update(req, res){
   try{
-    StatsStreaks.findByPk(req.params.id).then(stats => {
-      StatsStreaks.update(req.body, { where: { id: stats.id }}).then(() => {
+    StatsTeams.findByPk(req.params.id).then(stats => {
+      StatsTeams.update(req.body, { where: { id: stats.id }}).then(() => {
         res.status(400).send(stats)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
@@ -58,9 +58,9 @@ function update(req, res){
 
 function destroy(req, res){
   try{
-    StatsStreaks.findByPk(req.params.id).then(stats => {
+    StatsTeams.findByPk(req.params.id).then(stats => {
       let id = stats ? stats.id : 0;
-      StatsStreaks.destroy({ where: { id: id }}).then(() => {
+      StatsTeams.destroy({ where: { id: id }}).then(() => {
         res.json(stats)
       }).catch(err => {
         res.status(400).send({error: true, message: 'Bad Request', data: err.errors})

@@ -48,8 +48,8 @@ function loadTeamPage(team){
 
     let token = localStorage.getItem('token')
     loadTeamInfo(team, token)
-    loadStats(team, token)
-    loadStreaksStats(team, token)
+    loadStatsTeams(team, token)
+    loadStatsTeamsStreaks(team, token)
     // setTimeout(function(){ loadMatches(team, token) }, 2000);
 
   })
@@ -76,10 +76,10 @@ function loadTeamInfo(team, token){
     })
 }
 
-function loadStats(team, token){
+function loadStatsTeams(team, token){
 
   var settings = {
-    "url": "/api/stats/"+team,
+    "url": "/api/statsTeams/"+team,
     "method": "GET",
     "headers": {
       "Content-Type": "application/json",
@@ -160,10 +160,10 @@ function loadStats(team, token){
 
 }
 
-function loadStreaksStats(team, token){
+function loadStatsTeamsStreaks(team, token){
 
   var settings = {
-    "url": "/api/statsstreaks/"+team,
+    "url": "/api/statsTeamsStreaks/"+team,
     "method": "GET",
     "headers": {
       "Content-Type": "application/json",
