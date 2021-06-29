@@ -4,7 +4,7 @@ const { Op } = require("sequelize")
 const models = require('../../models')
 const Team = models.Team
 const Match = models.Match
-const StatsStreaks = models.StatsStreaks
+const StatsTeamsStreaks = models.StatsTeamsStreaks
 
 
 const getTeams = () => {
@@ -33,7 +33,7 @@ const getMatchesByTeam = (team) => {
 
 const addStats = (stats) => {
   return new Promise((resolve, reject) => {
-    StatsStreaks.create(stats).then((stats) => {
+    StatsTeamsStreaks.create(stats).then((stats) => {
       resolve(stats)
     }).catch(err => {
       reject(err)
