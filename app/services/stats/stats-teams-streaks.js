@@ -5,6 +5,7 @@ const models = require('../../models')
 const Team = models.Team
 const Match = models.Match
 const StatsTeamsStreaks = models.StatsTeamsStreaks
+const StatsTeams = models.StatsTeams
 
 
 const getTeams = () => {
@@ -38,6 +39,22 @@ const addStats = (stats) => {
     }).catch(err => {
       reject(err)
     })
+  })
+}
+
+const updateStatsTeams = (team, stats) => {
+  return new Promise((resolve, reject) => {
+    StatsTeams.findOne({ where: {teamId: team} }).then(statsTeam => {
+      StatsTeams.update(stats, { where: { teamId: team }}).then(() => {
+        resolve(team)
+      }).catch(err => {
+        reject(err)
+      })
+    }).catch(err => {
+      reject(err)
+    })
+
+    
   })
 }
 
@@ -94,6 +111,30 @@ async function run(){
       }
       
     }
+    
+    let fin = true 
+    while(fin){
+      if(streaks[streaks.length-1] == 0){
+        streaks.pop()
+      }else{
+        fin = false
+      }
+    }
+    let sum_streaks = 0, sum_num_matches = 0, sum_acum_num_matches = 0, acum_pond = 0
+    for (let i = 0; i < streaks.length; i++){
+      acum_pond += streaks[i] * i
+      sum_streaks += streaks[i]
+      if(streaks[i] != 0){
+        sum_num_matches += i
+        sum_acum_num_matches++
+      }
+    }
+    let stats = {
+      max_streak_ties: (streaks.length - 1),
+      avg_streak_ties: sum_num_matches/sum_acum_num_matches,
+      avg_pond_streak_ties: acum_pond/sum_streaks
+    }
+    await updateStatsTeams(team, stats)
     
   }
 

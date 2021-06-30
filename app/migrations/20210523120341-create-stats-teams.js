@@ -40,6 +40,15 @@ module.exports = {
       per_ties: {
         type: Sequelize.DECIMAL(12, 10)
       },
+      max_streak_ties: {
+        type: Sequelize.INTEGER
+      },
+      avg_streak_ties: {
+        type: Sequelize.DECIMAL(12, 10)
+      },
+      avg_pond_streak_ties: {
+        type: Sequelize.DECIMAL(12, 10)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

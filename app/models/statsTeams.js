@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     losses: DataTypes.INTEGER,
     per_losses: DataTypes.DECIMAL,
     ties: DataTypes.INTEGER,
-    per_ties: DataTypes.DECIMAL
+    per_ties: DataTypes.DECIMAL,
+    max_streak_ties: DataTypes.INTEGER,
+    avg_streak_ties: DataTypes.DECIMAL,
+    avg_pond_streak_ties: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'StatsTeams',

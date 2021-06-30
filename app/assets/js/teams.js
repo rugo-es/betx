@@ -129,7 +129,7 @@ function loadStatsTeams(team, token){
       label.horizontalCenter = "middle";
       label.verticalCenter = "middle";
       label.adapter.add("text", function(text, target){
-        return "[font-size:18px]total[/]:\n[bold font-size:30px]" + pieSeries.dataItem.values.value.sum + "[/]";
+        return "[bold font-size:30px]" + pieSeries.dataItem.values.value.sum + "[/]\n[font-size:18px]matches[/]";
       })
 
       // Pie chart 2
@@ -235,7 +235,7 @@ function loadStatsTeamsStreaks(team, token){
       
       // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
       series.columns.template.adapter.add("fill", function (fill, target) {
-      return streakschart.colors.getIndex(target.dataItem.index);
+        return streakschart.colors.getIndex(target.dataItem.index);
       });
 
     })
