@@ -6,7 +6,6 @@ const Team = models.Team
 const Match = models.Match
 const StatsTeams = models.StatsTeams
 
-
 const getTeams = () => {
   return new Promise((resolve, reject) => {
     Team.findAll()
@@ -41,8 +40,18 @@ const addStats = (stats) => {
   })
 }
 
-async function run(){
+const truncateStatsTeams = () => {
+  return new Promise((resolve, reject) => {
+    StatsTeams.destroy({ truncate: true, cascade: false }).then(() => {
+      resolve()
+    }).catch(err => {
+      reject(err)
+    }) 
+  })
+}
 
+async function run(){
+  await truncateStatsTeams()
   var teams = await getTeams()
   for (let j = 0; j < teams.length; j++){
     let team = teams[j].id
@@ -68,8 +77,7 @@ async function run(){
     }
     console.log(stats)
     await addStats(stats)
-  }
-  
+  }  
 }
 
 run()

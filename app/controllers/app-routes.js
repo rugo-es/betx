@@ -254,6 +254,7 @@ function teams(req, res){
     css: [
       cdn.css.bootswatch.cyborg, 
       cdn.css.datatable,
+      cdn.css.worldFlagsSprite,
       '/css/style.css'
     ],
     scripts: [

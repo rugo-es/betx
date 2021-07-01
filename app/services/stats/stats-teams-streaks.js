@@ -53,16 +53,23 @@ const updateStatsTeams = (team, stats) => {
     }).catch(err => {
       reject(err)
     })
+  })
+}
 
-    
+const truncateStatsTeams = () => {
+  return new Promise((resolve, reject) => {
+    StatsTeamsStreaks.destroy({ truncate: true, cascade: false }).then(() => {
+      resolve()
+    }).catch(err => {
+      reject(err)
+    }) 
   })
 }
 
 async function run(){
-
+  await truncateStatsTeams()
   var teams = await getTeams()
   for (let j = 0; j < teams.length; j++){
-
     let team = teams[j].id
     var matches = await getMatchesByTeam(team)
     let season = '0';
@@ -70,7 +77,6 @@ async function run(){
     let last_journey = 1;
     let streaks = [0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0 ,0,0,0,0,0];
     for (let i = 0; i < matches.length; i++){
-
       if(matches[i].seasonId != season){
         if(season != '0'){
           if(ties_streak != 1){
@@ -91,7 +97,6 @@ async function run(){
         ties_streak = 1;
         season = matches[i].seasonId
       }
-
       if(matches[i].result == 'X'){
         streaks[ties_streak]++;
         let stats = {
@@ -111,7 +116,6 @@ async function run(){
       }
       
     }
-    
     let fin = true 
     while(fin){
       if(streaks[streaks.length-1] == 0){
@@ -135,9 +139,7 @@ async function run(){
       avg_pond_streak_ties: acum_pond/sum_streaks
     }
     await updateStatsTeams(team, stats)
-    
   }
-
 }
 
 run()

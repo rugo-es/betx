@@ -5,7 +5,8 @@ const StatsTeams = models.StatsTeams
 
 function getAll(req, res){
   try{
-    StatsTeams.findAll({ where: req.body, include: 'team' }).then(stats => {
+    
+    StatsTeams.findAll({ where: req.body, include: {model: models.Team, as: 'team', include: ['country'] } }).then(stats => {
       res.json(stats)
     }).catch(err => {
       res.status(400).send({error: true, message: 'Bad Request', data: err.errors})

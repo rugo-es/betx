@@ -41,8 +41,18 @@ const addStats = (stats) => {
   })
 }
 
-async function run(){
+const truncateStatsLeagues = () => {
+  return new Promise((resolve, reject) => {
+    StatsLeagues.destroy({ truncate: true, cascade: false }).then(() => {
+      resolve()
+    }).catch(err => {
+      reject(err)
+    }) 
+  })
+}
 
+async function run(){
+  await truncateStatsLeagues()
   var leagues = await getLeagues()
   for (let j = 0; j < leagues.length; j++){
     let league = leagues[j].id
@@ -50,8 +60,10 @@ async function run(){
     let num_matches = 0, num_matches_finished = 0, no_ties = 0, ties = 0
     for (let i = 0; i < matches.length; i++){
       num_matches++
-      if(matches[i].state == 'Finalizado'){ num_matches_finished++ }
-      if(matches[i].result == 'X'){ ties++ }else{ no_ties++ }
+      if(matches[i].state == 'Finalizado'){ 
+        num_matches_finished++ 
+        if(matches[i].result == 'X'){ ties++ }else{ no_ties++ }
+      }
     }
     let stats = {
       leagueId: league,
@@ -65,7 +77,6 @@ async function run(){
     console.log(stats)
     await addStats(stats)
   }
-  
 }
 
 run()

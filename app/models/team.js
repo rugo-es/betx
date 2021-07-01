@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Team.belongsTo(models.Country, {foreignKey: 'countryId', as: 'country'})
     }
   };
   Team.init({
     name: DataTypes.STRING,
     link: DataTypes.STRING,
-    icon: DataTypes.STRING
+    icon: DataTypes.STRING,
+    countryId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Team',

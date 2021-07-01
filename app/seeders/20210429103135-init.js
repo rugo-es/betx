@@ -52,7 +52,8 @@ module.exports = {
       { name: '2016-2017', code: '2017' },
       { name: '2017-2018', code: '2018' },
       { name: '2018-2019', code: '2019' },
-      { name: '2019-2020', code: '2020' }
+      { name: '2019-2020', code: '2020' },
+      { name: '2020-2021', code: '2021' },
     ]);
 
     await queryInterface.bulkInsert('LeagueSeasons', [
@@ -77,6 +78,7 @@ module.exports = {
       { leagueId: 1, seasonId: 18, matches: 38 },
       { leagueId: 1, seasonId: 19, matches: 38 },
       { leagueId: 1, seasonId: 20, matches: 38 },
+      { leagueId: 1, seasonId: 21, matches: 38 },
       // Segunda division
       { leagueId: 2, seasonId: 1, matches: 42 },
       { leagueId: 2, seasonId: 2, matches: 42 },
@@ -98,6 +100,7 @@ module.exports = {
       { leagueId: 2, seasonId: 18, matches: 42 },
       { leagueId: 2, seasonId: 19, matches: 42 },
       { leagueId: 2, seasonId: 20, matches: 42 },
+      { leagueId: 2, seasonId: 21, matches: 42 },
       // premier
       { leagueId: 3, seasonId: 1, matches: 38 },
       { leagueId: 3, seasonId: 2, matches: 38 },
@@ -119,6 +122,7 @@ module.exports = {
       { leagueId: 3, seasonId: 18, matches: 38 },
       { leagueId: 3, seasonId: 19, matches: 38 },
       { leagueId: 3, seasonId: 20, matches: 38 },
+      { leagueId: 3, seasonId: 21, matches: 38 },
       // championship
       { leagueId: 4, seasonId: 1, matches: 46 },
       { leagueId: 4, seasonId: 2, matches: 46 },
@@ -140,6 +144,7 @@ module.exports = {
       { leagueId: 4, seasonId: 18, matches: 46 },
       { leagueId: 4, seasonId: 19, matches: 46 },
       { leagueId: 4, seasonId: 20, matches: 46 },
+      { leagueId: 4, seasonId: 21, matches: 46 },
       // serie a
       { leagueId: 5, seasonId: 1, matches: 34 },
       { leagueId: 5, seasonId: 2, matches: 34 },
@@ -161,6 +166,7 @@ module.exports = {
       { leagueId: 5, seasonId: 18, matches: 38 },
       { leagueId: 5, seasonId: 19, matches: 38 },
       { leagueId: 5, seasonId: 20, matches: 38 },
+      { leagueId: 5, seasonId: 21, matches: 38 },
       // serie b
       { leagueId: 6, seasonId: 1, matches: 38 },
       { leagueId: 6, seasonId: 2, matches: 38 },
@@ -182,6 +188,7 @@ module.exports = {
       { leagueId: 6, seasonId: 18, matches: 42 },
       { leagueId: 6, seasonId: 19, matches: 38 },
       { leagueId: 6, seasonId: 20, matches: 38 },
+      { leagueId: 6, seasonId: 21, matches: 38 },
       // ligue 1
       { leagueId: 7, seasonId: 1, matches: 34 },
       { leagueId: 7, seasonId: 2, matches: 34 },
@@ -203,6 +210,7 @@ module.exports = {
       { leagueId: 7, seasonId: 18, matches: 38 },
       { leagueId: 7, seasonId: 19, matches: 38 },
       { leagueId: 7, seasonId: 20, matches: 38 },
+      { leagueId: 7, seasonId: 21, matches: 38 },
       // ligue 2
       { leagueId: 8, seasonId: 1, matches: 38 },
       { leagueId: 8, seasonId: 2, matches: 38 },
@@ -224,6 +232,7 @@ module.exports = {
       { leagueId: 8, seasonId: 18, matches: 38 },
       { leagueId: 8, seasonId: 19, matches: 38 },
       { leagueId: 8, seasonId: 20, matches: 38 },
+      { leagueId: 8, seasonId: 21, matches: 38 },
       // bundesliga
       { leagueId: 9, seasonId: 1, matches: 34 },
       { leagueId: 9, seasonId: 2, matches: 34 },
@@ -245,6 +254,7 @@ module.exports = {
       { leagueId: 9, seasonId: 18, matches: 34 },
       { leagueId: 9, seasonId: 19, matches: 34 },
       { leagueId: 9, seasonId: 20, matches: 34 },
+      { leagueId: 9, seasonId: 21, matches: 34 },
       // bundesliga 2
       { leagueId: 10, seasonId: 1, matches: 34 },
       { leagueId: 10, seasonId: 2, matches: 34 },
@@ -265,7 +275,8 @@ module.exports = {
       { leagueId: 10, seasonId: 17, matches: 34 },
       { leagueId: 10, seasonId: 18, matches: 34 },
       { leagueId: 10, seasonId: 19, matches: 34 },
-      { leagueId: 10, seasonId: 20, matches: 34 }
+      { leagueId: 10, seasonId: 20, matches: 34 },
+      { leagueId: 10, seasonId: 21, matches: 34 }
     ]);
 
 

@@ -30,6 +30,7 @@ function loadTeamsPage(){
         data: data,
         columns: [
           { data: 'team.name', render: function(data, type, row){ return '<a href="/app/teams?team='+row.team.id+'"><img style="width: 20px; margin-right: 5px;" src="/img/teams/png/id-'+row.team.id+'.png"> '+data+'</a>'} },
+          { data: 'team.country.code', render: function(data, type, row){ return '<div class="f32"><span style="transform: scale(0.7);" class="flag '+data+'"></span> '+row.team.country.name+'</div> ' } },  
           { data: 'num_matches_finished' },
           { data: 'per_ties', render: function(data, type, row){ return (data*100).toFixed(2)+'%'}},
           { data: 'max_streak_ties'},
