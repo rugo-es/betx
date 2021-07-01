@@ -15,7 +15,7 @@ function loadTeamsPage(){
   $("#teams-container").show();
   let token = localStorage.getItem('token')
   var settings = {
-    "url": "/api/teams",
+    "url": "/api/statsTeams",
     "method": "GET",
     "headers": {
       "Content-Type": "application/json",
@@ -25,10 +25,16 @@ function loadTeamsPage(){
   $.ajax(settings)
     .done(function (response) {
       console.log(response)
+      let data = response.filter(x => x.num_matches > 300 )
       $('#datatable').DataTable({
-        data: response,
+        data: data,
         columns: [
-          { data: 'name', render: function(data, type, row){ return '<a href="/app/teams?team='+row.id+'">'+data+'</a>'} }
+          { data: 'team.name', render: function(data, type, row){ return '<a href="/app/teams?team='+row.team.id+'"><img style="width: 20px; margin-right: 5px;" src="/img/teams/png/id-'+row.team.id+'.png"> '+data+'</a>'} },
+          { data: 'num_matches_finished' },
+          { data: 'per_ties', render: function(data, type, row){ return (data*100).toFixed(2)+'%'}},
+          { data: 'max_streak_ties'},
+          { data: 'avg_streak_ties', render: function(data, type, row){ return parseFloat(data).toFixed(2)}},
+          { data: 'avg_pond_streak_ties', render: function(data, type, row){ return parseFloat(data).toFixed(2)}}
         ]
       });
     })
@@ -50,7 +56,7 @@ function loadTeamPage(team){
     loadTeamInfo(team, token)
     loadStatsTeams(team, token)
     loadStatsTeamsStreaks(team, token)
-    // setTimeout(function(){ loadMatches(team, token) }, 2000);
+    setTimeout(function(){ loadMatches(team, token) }, 2000);
 
   })
     
@@ -69,7 +75,7 @@ function loadTeamInfo(team, token){
   };
   $.ajax(settings)
     .done(function (response) {
-      $("#team-name").html(response.name)
+      $("#team-name").html('<img style="width:85px;margin-right: 20px;" src="/img/teams/png/id-'+response.id+'.png">'+response.name)
     })
     .fail( function(jqXHR, textStatus, errorThrown){
       console.log(errorThrown)
@@ -342,6 +348,8 @@ function loadMatches(team, token){
           columnTemplate.tooltipText = "{journey} | {local} {local_goals} - {visitor_goals} {visitor} | {ties_streak} {heatmap_value} ";
           columnTemplate.width = am4core.percent(100);
           columnTemplate.height = am4core.percent(100);
+          columnTemplate.tooltipX = am4core.percent(50);
+          columnTemplate.tooltipY = am4core.percent(10);
 
           heatmapseries.heatRules.push({
             target: columnTemplate,
