@@ -57,6 +57,9 @@ app.use('/api', teamsRoutes)
 const leaguesRoutes = require(path.join(__dirname, 'app/routes/leagues'))
 app.use('/api', leaguesRoutes)
 
+const seasonsRoutes = require(path.join(__dirname, 'app/routes/seasons'))
+app.use('/api', seasonsRoutes)
+
 const statsTeamsRoutes = require(path.join(__dirname, 'app/routes/statsTeams'))
 app.use('/api', statsTeamsRoutes)
 

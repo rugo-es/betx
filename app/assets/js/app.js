@@ -1,6 +1,15 @@
 $(document).ready(function(){
-  checkToken();
+  checkToken()
   linkActive()
+  /* navbar */
+  document.querySelector('#navbarSideCollapse').addEventListener('click', function () {
+    document.querySelector('.offcanvas-collapse').classList.toggle('open')
+  })
+  /* tooltips */
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
 })
 
 /* User */

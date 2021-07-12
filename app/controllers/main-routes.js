@@ -7,7 +7,7 @@ function landing(req, res){
       title: 'Landing page',
       nav: false,
       mainClass: 'container',
-      css: [ cdn.css.bootswatch.cyborg ],
+      css: [ cdn.css.bootswatch.cyborg, '/css/style.css' ],
       scripts: [ cdn.js.jquery, cdn.js.bootstrap.bundle ]
     }
   )

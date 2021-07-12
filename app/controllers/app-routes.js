@@ -226,7 +226,6 @@ function leagues(req, res){
     mainClass: 'container mt-5 pt-3',
     css: [
       cdn.css.bootswatch.cyborg, 
-      cdn.css.datatable,
       '/css/style.css'
     ],
     scripts: [
@@ -239,7 +238,6 @@ function leagues(req, res){
       cdn.js.amcharts.bullets,
       cdn.js.amcharts.animated,
       cdn.js.amcharts.theme.dark,
-      cdn.js.datatable,
       '/js/leagues.js'
       
     ]
@@ -269,7 +267,25 @@ function teams(req, res){
       cdn.js.amcharts.theme.dark,
       cdn.js.datatable,
       '/js/teams.js'
-      
+    ]
+  })
+}
+
+function simulator(req, res){
+  res.render('simulator', {
+    title: 'Simulator', 
+    nav: true,
+    mainClass: 'container mt-5 pt-3',
+    css: [
+      cdn.css.bootswatch.cyborg, 
+      cdn.css.worldFlagsSprite,
+      '/css/style.css'
+    ],
+    scripts: [
+      cdn.js.jquery,  
+      cdn.js.bootstrap.bundle, 
+      '/js/app.js',
+      '/js/simulator.js'     
     ]
   })
 }
@@ -282,5 +298,6 @@ module.exports = {
   lightbox,
   matches, 
   leagues,
-  teams
+  teams,
+  simulator
 }

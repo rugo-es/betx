@@ -25,7 +25,7 @@ function loadTeamsPage(){
   $.ajax(settings)
     .done(function (response) {
       console.log(response)
-      let data = response.filter(x => x.num_matches > 300 )
+      let data = response.filter(x => x.num_matches > 500 )
       $('#datatable').DataTable({
         data: data,
         columns: [

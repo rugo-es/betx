@@ -30,6 +30,19 @@ function getAllByTeam(req, res){
   }
 }
 
+function getAllByTeamSeason(req, res){
+  try{
+    Match.findAll({where: { seasonId: req.params.season, [Op.or]: [{ localId: req.params.team }, { visitorId: req.params.team }] }, include: ['local', 'visitor', 'season', {model: models.League, as: 'league', include: ['country'] }], order: [['seasonId', 'ASC'], ['journey', 'ASC']] }).then(matches => {
+      res.json(matches)
+    }).catch(err => {
+      console.log(err)
+      res.status(400).send({error: true, message: 'Bad Request', data: err.errors})
+    })
+  }catch(err){
+    res.status(500).send({error: true, message: 'Interval Server Error'})
+  }
+}
+
 function getById(req, res){
   try{
     Match.findByPk(req.params.id).then(match => {
@@ -91,6 +104,7 @@ function destroy(req, res){
 module.exports = {
   getAll,
   getAllByTeam,
+  getAllByTeamSeason,
   getById,
   create,
   update,

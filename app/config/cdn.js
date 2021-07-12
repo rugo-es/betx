@@ -1,14 +1,22 @@
 "use strict"
-
+/*
+      default: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+      cyborg: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.0.2/cerulean/bootstrap.min.css'
+      bundle: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+      
+      default: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css',
+      cyborg: 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css',
+      bundle: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js'
+*/
 const cdn = {
   css: {
     bootstrap:{
-      default: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css',
+      default: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
       icons: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css'
     },
     bootswatch: {
-      cyborg: 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css',
-      ubuntu: 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css'
+      cyborg: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.0.2/cyborg/bootstrap.min.css',
+      ubuntu: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.0.2/united/bootstrap.min.css'
     },
     animate: {
       textillate: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css',
@@ -21,7 +29,7 @@ const cdn = {
   js: {
     jquery: 'https://code.jquery.com/jquery-3.6.0.min.js',
     bootstrap: {
-      bundle: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js'
+      bundle: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
     },
     lettering: 'https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.6.1/jquery.lettering.min.js',
     textillate: 'https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js',

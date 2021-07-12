@@ -41,8 +41,6 @@ const updateTeam = (team, data) => {
     }).catch(err => {
       reject(err)
     })
-
-    
   })
 }
 
